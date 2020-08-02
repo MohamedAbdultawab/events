@@ -2,6 +2,9 @@ import frappe
 
 
 def get_context(context):
+    """
+        Context for events.html jinja2 template
+    """
     context['docs'] = {}
     events = frappe.get_all('Custom Event',
         fields=['name', 'title', 'status', 'date'])

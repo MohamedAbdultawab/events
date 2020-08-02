@@ -5,6 +5,9 @@ from frappe.utils import add_days, nowdate
 
 @frappe.whitelist()
 def send_invitation_emails(event):
+	"""
+		Send Email Invitations to event invitees.
+	"""
 
 	event = frappe.get_doc("Custom Event", event)
 	# event.check_permission("email")
@@ -30,6 +33,9 @@ def send_invitation_emails(event):
 
 @frappe.whitelist()
 def get_events(start, end):
+	"""
+		Return Event list.
+	"""
 	if not frappe.has_permission("Custom Event", "read"):
 		raise frappe.PermissionError
 
@@ -42,14 +48,17 @@ def get_events(start, end):
 		0 as all_day
 		from `tabCustom Event`
 		where `date` between %(start)s and %(end)s""", {
-			"start": start,
-			"end": end
+		"start": start,
+		"end": end
 	}, as_dict=True)
 	return data
 
 
 def create_welcome_party_event(doc, method):
-	"""Create a welcome party event when a new User is added"""
+	"""
+			Create a welcome party event when a new User is added.
+	"""
+
 	event = frappe.get_doc({
 		"doctype": "Custom Event",
 		"title": "Welcome Party for {0}".format(doc.first_name),

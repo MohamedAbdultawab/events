@@ -5,13 +5,9 @@
 from __future__ import unicode_literals
 
 import frappe
-from frappe.website.website_generator import WebsiteGenerator
 from frappe import _
 from frappe.utils import nowdate, nowtime
-
-DATE_FORMAT = "%Y-%m-%d"
-TIME_FORMAT = "%H:%M:%S.%f"
-DATETIME_FORMAT = DATE_FORMAT + " " + TIME_FORMAT
+from frappe.website.website_generator import WebsiteGenerator
 
 
 class CustomEvent(WebsiteGenerator):
@@ -21,12 +17,16 @@ class CustomEvent(WebsiteGenerator):
         self.validate_date_and_time()
 
     def validate_date_and_time(self):
+        """
+            Validate date of event to be after now.
+        """
         if isinstance(self.date, str):
             if self.date < nowdate() or (self.date == nowdate() and self.start_time < nowtime()):
                 frappe.throw(_("Cannot create event on past date"))
         else:
-            if self.date.strftime(DATE_FORMAT) < nowdate() or (self.date.strftime(DATE_FORMAT) == nowdate() and self.start_time.strftime(TIME_FORMAT) < nowtime()):
+            if self.date.strftime("%Y-%m-%d") < nowdate() or (self.date.strftime("%Y-%m-%d") == nowdate() and self.start_time.strftime("%H:%M:%S.%f") < nowtime()):
                 frappe.throw(_("Cannot create event on past date"))
+
     def validate_invitees(self):
         """Set missing names and warn if duplicate"""
         found = []
@@ -43,6 +43,8 @@ class CustomEvent(WebsiteGenerator):
 
 @frappe.whitelist()
 def get_full_name(invitee):
+    """
+        Return full name of a user"""
     user = frappe.get_doc("User", invitee)
 
     return " ".join(filter(None, (user.first_name, user.middle_name, user.last_name)))
