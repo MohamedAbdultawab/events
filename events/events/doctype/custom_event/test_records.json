@@ -1,0 +1,23 @@
+[
+	{
+		"doctype": "Custom Event",
+		"title":"_Test Event 1",
+		"start_time": "20:00:00",
+		"end_time": "22:00:00",
+		"date": "2020-10-01"
+	},
+	{
+		"doctype": "Custom Event",
+		"title":"_Test Event 2",
+		"start_time": "20:00:00",
+		"end_time": "22:00:00",
+		"date": "2020-11-01"
+	},
+	{
+		"doctype": "Custom Event",
+		"title": "_Test Event 3",
+		"start_time": "20:00:00",
+		"end_time": "22:00:00",
+		"date": "2020-12-01"
+	}
+]

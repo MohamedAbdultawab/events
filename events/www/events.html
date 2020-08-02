@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col-sm-4">
+        {% for status, events in docs.items() %}
+        <h2>{{ status }}</h2>
+            {% for event in events %}
+                <a href="/Custom Event/{{ event.get('name') }}"><h4>{{ event.get('title') }}</h4></a>
+                <p>{{ event.get('date') }}</p>
+                <p>{{ event.get('status') }}</p>
+            {% endfor %}
+        {% endfor %}
+    </div>
+</div>

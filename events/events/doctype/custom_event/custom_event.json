@@ -1,0 +1,176 @@
+{
+ "allow_guest_to_view": 1,
+ "autoname": "Event-.######",
+ "color": "blue",
+ "creation": "2020-07-31 01:09:27.125068",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "details_section",
+  "title",
+  "status",
+  "column_break_1",
+  "date",
+  "start_time",
+  "end_time",
+  "agenda_section",
+  "agenda",
+  "invitees_section",
+  "invitees",
+  "invitation_section",
+  "invitation_subject",
+  "invitation_message",
+  "send_invitations",
+  "route"
+ ],
+ "fields": [
+  {
+   "allow_in_quick_entry": 1,
+   "bold": 1,
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Title",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "start_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Start Time",
+   "reqd": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "end_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "End Time",
+   "reqd": 1
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Planned\nInvitations Sent\nIn-Progress\nEnded\nCanceled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "agenda",
+   "fieldtype": "Table",
+   "label": "Agenda",
+   "options": "Custom Event Agenda"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "agenda_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "invitees",
+   "fieldtype": "Table",
+   "label": "Invitees",
+   "options": "Event Invitee"
+  },
+  {
+   "fieldname": "invitees_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "invitation_section",
+   "fieldtype": "Section Break",
+   "label": "Invitations"
+  },
+  {
+   "fieldname": "invitation_subject",
+   "fieldtype": "Data",
+   "label": "Invitation Subject",
+   "translatable": 1
+  },
+  {
+   "fieldname": "invitation_message",
+   "fieldtype": "Text Editor",
+   "label": "Invitation Message"
+  },
+  {
+   "depends_on": "eval:doc.status===\"Planned\"",
+   "fieldname": "send_invitations",
+   "fieldtype": "Button",
+   "label": "Send Invitations"
+  },
+  {
+   "fieldname": "route",
+   "fieldtype": "Data",
+   "label": "Route"
+  }
+ ],
+ "icon": "octicon octicon-briefcase",
+ "modified": "2020-08-02 17:20:16.183108",
+ "modified_by": "Administrator",
+ "module": "Events",
+ "name": "Custom Event",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Event Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "route": "events",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

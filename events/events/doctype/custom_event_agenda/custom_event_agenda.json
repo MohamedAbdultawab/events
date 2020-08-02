@@ -1,0 +1,29 @@
+{
+ "creation": "2020-07-31 01:09:15.850665",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Description",
+   "reqd": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2020-08-01 15:28:12.219712",
+ "modified_by": "Administrator",
+ "module": "Events",
+ "name": "Custom Event Agenda",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
