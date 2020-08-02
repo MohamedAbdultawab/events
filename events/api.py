@@ -12,7 +12,7 @@ def send_invitation_emails(event):
 	if event.status == "Planned":
 		frappe.sendmail(
 			recipients=[d.invitee for d in event.invitees],
-			sender='notify@swira.design',
+			sender='mohamedtoba96@gmail.com',
 			subject=event.invitation_subject or event.title,
 			message=event.invitation_message,
 			reference_doctype=event.doctype,
@@ -52,7 +52,7 @@ def create_welcome_party_event(doc, method):
 	"""Create a welcome party event when a new User is added"""
 	event = frappe.get_doc({
 		"doctype": "Custom Event",
-		"title": "Welcome Party for {0}".format(doc.first_name.title()),
+		"title": "Welcome Party for {0}".format(doc.first_name),
 		"date": add_days(nowdate(), 7),
 		"from_time": "09:00",
 		"to_time": "09:30",

@@ -9,6 +9,10 @@ from frappe.website.website_generator import WebsiteGenerator
 from frappe import _
 from frappe.utils import nowdate, nowtime
 
+DATE_FORMAT = "%Y-%m-%d"
+TIME_FORMAT = "%H:%M:%S.%f"
+DATETIME_FORMAT = DATE_FORMAT + " " + TIME_FORMAT
+
 
 class CustomEvent(WebsiteGenerator):
 
@@ -17,9 +21,12 @@ class CustomEvent(WebsiteGenerator):
         self.validate_date_and_time()
 
     def validate_date_and_time(self):
-        if self.date < nowdate() or (self.date == nowdate() and self.start_time < nowtime()):
-            frappe.throw(_("Cannot create event on past date"))
-
+        if isinstance(self.date, str):
+            if self.date < nowdate() or (self.date == nowdate() and self.start_time < nowtime()):
+                frappe.throw(_("Cannot create event on past date"))
+        else:
+            if self.date.strftime(DATE_FORMAT) < nowdate() or (self.date.strftime(DATE_FORMAT) == nowdate() and self.start_time.strftime(TIME_FORMAT) < nowtime()):
+                frappe.throw(_("Cannot create event on past date"))
     def validate_invitees(self):
         """Set missing names and warn if duplicate"""
         found = []
